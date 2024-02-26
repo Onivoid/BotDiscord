@@ -7,4 +7,4 @@ COPY . .
 RUN npm run build
 RUN ls -la dist
 EXPOSE 1685
-CMD [ "pm2-runtime", "start", "dist/index.js" ]
+CMD [ "node", "dist/index.js" ]
