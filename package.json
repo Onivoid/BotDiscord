@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only --poll --watch ./src/**/* ./src/index.ts",
+    "prebuild": "npm install -g typescript pm2 ts-node-dev tsc",
     "build": "tsc",
     "prestart": "npm run build",
     "start": "pm2-runtime start ./dist/index.js"
