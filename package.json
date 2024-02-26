@@ -6,7 +6,6 @@
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only --poll --watch ./src/**/* ./src/index.ts",
     "build": "tsc",
-    "prestart": "npm run build",
     "start": "pm2-runtime start ./dist/index.js"
   },
   "author": "",
