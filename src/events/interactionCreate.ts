@@ -1,11 +1,13 @@
 import { ModalSubmitInteraction } from 'discord.js';
 import fs from 'fs';
+import path from 'path';
+const setupThreadsPath = path.resolve(__dirname, '../settings/setupThreads.json');
 
 interface ThreadConfig {
   channels: string[];
 }
 
-const threadConfig: ThreadConfig = JSON.parse(fs.readFileSync('src/settings/setupThreads.json', 'utf-8'));
+const threadConfig: ThreadConfig = JSON.parse(fs.readFileSync(setupThreadsPath, 'utf-8'));
 
 export default async (interaction: ModalSubmitInteraction) => {
   if (!interaction.isModalSubmit()) return;

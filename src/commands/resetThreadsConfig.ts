@@ -1,7 +1,9 @@
 import { CommandInteraction } from "discord.js";
 import fs from 'fs';
+import path from 'path';
+const setupThreadsPath = path.resolve(__dirname, '../settings/setupThreads.json');
 
-const threadConfig = JSON.parse(fs.readFileSync('src/settings/setupThreads.json', 'utf-8'));
+const threadConfig = JSON.parse(fs.readFileSync(setupThreadsPath, 'utf-8'));
 
 export default {
   name: 'reset-threads-config',
