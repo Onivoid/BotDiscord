@@ -1,0 +1,9 @@
+version: '3'
+services:
+  bot:
+    build: .
+    volumes:
+      - .:/usr/bot
+    ports:
+      - 1685:1685
+    command: npm run dev
