@@ -1,7 +1,8 @@
 FROM node:20
 WORKDIR /usr/bot
-COPY . .
-RUN npm install -g typescript pm2 ts-node-dev tsc
+COPY package*.json ./
 RUN npm install
+COPY . .
+RUN npm run build
 EXPOSE 1685
 CMD [ "pm2-runtime", "start", "dist/index.js" ]
