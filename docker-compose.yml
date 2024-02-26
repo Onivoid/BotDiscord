@@ -6,3 +6,4 @@ services:
       - .:/usr/bot
     ports:
       - 1685:1685
+    command: node dist/index.js

@@ -7,4 +7,3 @@ COPY . .
 RUN npm run build
 RUN pwd && ls -la dist
 EXPOSE 1685
-CMD [ "ls -la dist" ]
