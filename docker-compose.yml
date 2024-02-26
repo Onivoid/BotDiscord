@@ -6,4 +6,4 @@ services:
       - .:/usr/bot
     ports:
       - 1685:1685
-    command: npm run dev
+    command: npm run start
