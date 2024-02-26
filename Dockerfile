@@ -7,4 +7,4 @@ COPY . .
 RUN npm run build
 RUN pwd && ls -la dist
 EXPOSE 1685
-ENTRYPOINT [ "node", "dist/index.js" ]
+CMD [ "ls -la dist" ]
