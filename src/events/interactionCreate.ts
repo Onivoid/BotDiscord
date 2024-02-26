@@ -3,6 +3,10 @@ import fs from 'fs';
 import path from 'path';
 const setupThreadsPath = path.resolve(__dirname, '../settings/setupThreads.json');
 
+if (!fs.existsSync(setupThreadsPath)) {
+  fs.writeFileSync(setupThreadsPath, JSON.stringify({ channels: [] }), 'utf-8');
+}
+
 interface ThreadConfig {
   channels: string[];
 }
