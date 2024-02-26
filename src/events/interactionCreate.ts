@@ -1,7 +1,14 @@
 import { ModalSubmitInteraction } from 'discord.js';
 import fs from 'fs';
 import path from 'path';
-const setupThreadsPath = path.resolve(__dirname, '../settings/setupThreads.json');
+const settingsDir = path.resolve(__dirname, '../settings');
+let setupThreadsPath: string;
+
+if (!fs.existsSync(settingsDir)) {
+  fs.mkdirSync(settingsDir);
+}
+
+setupThreadsPath = path.resolve(settingsDir, 'setupThreads.json');
 
 if (!fs.existsSync(setupThreadsPath)) {
   fs.writeFileSync(setupThreadsPath, JSON.stringify({ channels: [] }), 'utf-8');
@@ -20,7 +27,7 @@ export default async (interaction: ModalSubmitInteraction) => {
     const channelIds: string[] = interaction.fields.getTextInputValue("channels").split(';');
     threadConfig.channels = threadConfig.channels.concat(channelIds)
       .filter((value, index, self) => self.indexOf(value) === index);
-    fs.writeFileSync('src/settings/setupThreads.json', JSON.stringify(threadConfig, null, 2));
+    fs.writeFileSync(setupThreadsPath, JSON.stringify(threadConfig, null, 2));
     interaction.reply({ content: 'Channels configurés.', ephemeral: true });
   }
 };

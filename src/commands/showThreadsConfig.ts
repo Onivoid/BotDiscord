@@ -1,7 +1,14 @@
 import { CommandInteraction } from "discord.js";
 import fs from 'fs';
 import path from 'path';
-const setupThreadsPath = path.resolve(__dirname, '../settings/setupThreads.json');
+const settingsDir = path.resolve(__dirname, '../settings');
+let setupThreadsPath: string;
+
+if (!fs.existsSync(settingsDir)) {
+  fs.mkdirSync(settingsDir);
+}
+
+setupThreadsPath = path.resolve(settingsDir, 'setupThreads.json');
 
 if (!fs.existsSync(setupThreadsPath)) {
   fs.writeFileSync(setupThreadsPath, JSON.stringify({ channels: [] }), 'utf-8');
