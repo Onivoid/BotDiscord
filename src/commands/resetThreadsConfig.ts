@@ -25,7 +25,7 @@ export default {
       return;
     }
     threadConfig.channels = [];
-    await fs.writeFileSync(setupThreadsPath, JSON.stringify(threadConfig, null, 2));
     await interaction.reply({ content: 'Configuration réinitialisée.', ephemeral: true });
+    await fs.writeFileSync(setupThreadsPath, JSON.stringify(threadConfig, null, 2));
   },
 };

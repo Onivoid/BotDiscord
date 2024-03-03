@@ -27,7 +27,7 @@ export default async (interaction: ModalSubmitInteraction) => {
     const channelIds: string[] = interaction.fields.getTextInputValue("channels").split(';');
     threadConfig.channels = threadConfig.channels.concat(channelIds)
       .filter((value, index, self) => self.indexOf(value) === index);
-    fs.writeFileSync(setupThreadsPath, JSON.stringify(threadConfig, null, 2));
     interaction.reply({ content: 'Channels configurés.', ephemeral: true });
+    fs.writeFileSync(setupThreadsPath, JSON.stringify(threadConfig, null, 2));
   }
 };
