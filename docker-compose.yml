@@ -7,4 +7,3 @@ services:
       - /usr/bot/dist
     ports:
       - 1685:1685
-    command: /bin/sh -c "npm install && npm run dev"

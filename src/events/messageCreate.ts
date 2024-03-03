@@ -1,7 +1,24 @@
 import { Message } from 'discord.js';
 import fs from 'fs';
+import path from 'path';
+const settingsDir = path.resolve(__dirname, '../settings');
+let setupThreadsPath: string;
 
-const threadConfig = JSON.parse(fs.readFileSync('src/settings/setupThreads.json', 'utf-8'));
+if (!fs.existsSync(settingsDir)) {
+  fs.mkdirSync(settingsDir);
+}
+
+setupThreadsPath = path.resolve(settingsDir, 'setupThreads.json');
+
+if (!fs.existsSync(setupThreadsPath)) {
+  fs.writeFileSync(setupThreadsPath, JSON.stringify({ channels: [] }), 'utf-8');
+}
+
+interface ThreadConfig {
+  channels: string[];
+}
+
+const threadConfig: ThreadConfig = JSON.parse(fs.readFileSync(setupThreadsPath, 'utf-8'));
 
 export default async (message: Message) => {
   await message.fetch();
