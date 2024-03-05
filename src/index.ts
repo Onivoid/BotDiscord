@@ -36,7 +36,9 @@ client.once('ready', () => {
         name: `${guild.memberCount} membres 👀`,
         type: ActivityType.Watching,
       };
-      client.user?.setActivity(activity);
+      setInterval(() => {
+        client.user?.setActivity(activity);
+      }, 1000 * 60 * 60);
     }
 });
 
