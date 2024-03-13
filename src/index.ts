@@ -25,12 +25,12 @@ const rest = new REST({ version: '10' }).setToken(TOKEN);
   }
 })();
 
-client.once('ready', () => {
+client.once('ready', async () => {
   console.log(`${client.user!.tag} is logged in \n
     Invitation : https://discord.com/oauth2/authorize?client_id=${client.user!.id}&scope=bot&permissions=27648860222`);
 
     const guildId = '267312518463094788';
-    const guild = client.guilds.cache.get(guildId);
+    const guild = await client.guilds.cache.get(guildId);
     if (guild) {
       const activity: ActivityOptions = {
         name: `${guild.memberCount} membres 👀`,
