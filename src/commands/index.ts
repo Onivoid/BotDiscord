@@ -4,7 +4,8 @@ import setupThreads from './setupThreads';
 import resetThreadsConfig from './resetThreadsConfig';
 import showThreadsConfig from './showThreadsConfig';
 import exportThreadsConfig from './exportThreadsConfig';
+import refresh from './refresh';
 
 export default [
-  ping, setupThreads, resetThreadsConfig, showThreadsConfig, exportThreadsConfig
+  ping, setupThreads, resetThreadsConfig, showThreadsConfig, exportThreadsConfig, refresh
 ];
