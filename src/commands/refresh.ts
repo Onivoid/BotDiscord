@@ -1,23 +1,16 @@
-import { CommandInteraction } from "discord.js";
-import pm2 from 'pm2';
+import { CommandInteraction, ActivityOptions, ActivityType } from "discord.js";
 
 export default {
-  name: 'refresh',
-  description: 'Redémarre le bot',
+  name: 'refresh_counter',
+  description: 'Redémarre le compteur de membres du bot',
   execute: async (interaction: CommandInteraction) => {
-    await interaction.reply('Redémarrage du bot...');
-    pm2.connect((err) => {
-      if (err) {
-        console.error(err);
-        process.exit(2);
-      }
-      
-      pm2.restart('dist/index.js', (err) => {
-        pm2.disconnect();
-        if (err) {
-          throw err;
-        }
-      });
-    });
-  },
+    const guildId = '267312518463094788';
+    const guild = await interaction.client.guilds.cache.get(guildId);
+    const activity: ActivityOptions = {
+      name: `${guild?.memberCount} membres 👀`,
+      type: ActivityType.Watching,
+    };
+    interaction.reply('Compteur de membres redémarré');
+    return interaction.client.user?.setActivity(activity);
+  }
 };
