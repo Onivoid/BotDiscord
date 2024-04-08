@@ -32,11 +32,11 @@ client.once('ready', async () => {
     const guildId = '267312518463094788';
     const guild = await client.guilds.cache.get(guildId);
     if (guild) {
-      const activity: ActivityOptions = {
-        name: `${guild.memberCount} membres 👀`,
-        type: ActivityType.Watching,
-      };
       setInterval(() => {
+        const activity: ActivityOptions = {
+          name: `${guild.memberCount} membres 👀`,
+          type: ActivityType.Watching,
+        };
         client.user?.setActivity(activity);
       }, 1000 * 60 * 60);
     }
