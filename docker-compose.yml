@@ -4,6 +4,6 @@ services:
     build: .
     volumes:
       - .:/usr/bot
-      - /usr/bot/dist
+      - ./dist:/usr/bot/dist
     ports:
       - 1685:1685
