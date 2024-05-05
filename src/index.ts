@@ -32,9 +32,10 @@ client.once('ready', async () => {
     const guildId = '267312518463094788';
     const guild = await client.guilds.cache.get(guildId);
     if (guild) {
-      setInterval(() => {
+      setInterval(async () => {
+        const memberCount = (await guild.members.fetch()).size;
         const activity: ActivityOptions = {
-          name: `${guild.memberCount} membres 👀`,
+          name: `${memberCount} membres 👀`,
           type: ActivityType.Watching,
         };
         client.user?.setActivity(activity);
